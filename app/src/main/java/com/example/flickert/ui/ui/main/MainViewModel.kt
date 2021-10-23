@@ -1,7 +1,36 @@
 package com.example.flickert.ui.ui.main
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.flickert.model.Photo
+import com.example.flickert.model.Photos
+import com.example.flickert.model.SearchResult
+import com.example.flickert.repository.Repository
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    var photos = MutableLiveData<Photos>()
+    var index = 1
+
+
+    init{
+        val repository = Repository()
+        repository.getPhotos(object:Callback<SearchResult>{
+            override fun onFailure(call: Call<SearchResult>, t: Throwable) {
+                Log.v("flickr_callback","erreur de callback avec flickr")
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
+                val rep = response?.body()
+                photos.value = rep?.photos!!
+                Log.v("reponse_photo", photos.value.toString())
+
+            }
+        })
+
+    }
 }
