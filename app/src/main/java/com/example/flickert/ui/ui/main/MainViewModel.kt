@@ -1,6 +1,7 @@
 package com.example.flickert.ui.ui.main
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.flickert.model.Photo
@@ -13,7 +14,8 @@ import retrofit2.Response
 
 class MainViewModel : ViewModel() {
     var photos = MutableLiveData<Photos>()
-    var index = 1
+    var liste_photo = ArrayList<Photo>()
+    var index = 0
 
 
     init{
@@ -25,12 +27,24 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
-                val rep = response?.body()
+                val rep = response.body()
                 photos.value = rep?.photos!!
-                Log.v("reponse_photo", photos.value.toString())
+                Log.v("reponse_photo", "photos récupérées")
 
             }
         })
 
+    }
+
+
+    fun nextImage() {
+
+        Log.v("index",index.toString())
+        if(index < photos.value?.photo?.size!!-1){
+            index = index +1
+        }
+        else{
+            index=0
+        }
     }
 }

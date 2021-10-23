@@ -7,8 +7,7 @@ class Photo(
     val server: String,
     val farm: String,
     val title: String,
-    val ispublic:
-    Integer,
-    val isfirend: Integer,
-    val isfamily: Integer
+    val ispublic: Int,
+    val isfirend: Int,
+    val isfamily: Int
 )

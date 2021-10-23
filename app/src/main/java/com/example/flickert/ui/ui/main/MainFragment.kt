@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -27,12 +28,21 @@ class MainFragment : Fragment() {
         val layout = inflater.inflate(R.layout.main_fragment, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // Change l'image et le titre
-        viewModel.photos.observe(viewLifecycleOwner, Observer {data ->
-            val image = layout.findViewById<ImageView>(R.id.image_hp)
-            val titre = layout.findViewById<TextView>(R.id.title_image)
+        viewModel.photos.observe(viewLifecycleOwner,
+            Observer { data ->
+                val image = layout.findViewById<ImageView>(R.id.image_hp)
+                val titre = layout.findViewById<TextView>(R.id.title_image)
+                titre.text = data.photo.get(viewModel.index).title
+
+        val boutonNext = layout.findViewById<Button>(R.id.buttonNext)
+        boutonNext.setOnClickListener{
+            viewModel.nextImage()
             titre.text = data.photo.get(viewModel.index).title
-    })
-    return layout}
+        }
+
+            })
+        return layout
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -41,3 +51,4 @@ class MainFragment : Fragment() {
     }
 
 }
+
