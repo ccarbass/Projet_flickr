@@ -14,8 +14,9 @@ import retrofit2.Response
 
 class MainViewModel : ViewModel() {
     var photos = MutableLiveData<Photos>()
-    var liste_photo = ArrayList<Photo>()
+    var photo = Photo("","","","","","",0,0,0)
     var index = 0
+    var url=""
 
 
     init{
@@ -29,6 +30,10 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
                 val rep = response.body()
                 photos.value = rep?.photos!!
+                photo = photos?.value?.photo?.get(1)!!
+
+                Log.v("index", index.toString())
+                Log.v("url", url)
                 Log.v("reponse_photo", "photos récupérées")
 
             }
@@ -38,13 +43,17 @@ class MainViewModel : ViewModel() {
 
 
     fun nextImage() {
-
         Log.v("index",index.toString())
         if(index < photos.value?.photo?.size!!-1){
-            index = index +1
+            index += 1
+
         }
         else{
             index=0
+
         }
+        photo= photos.value?.photo?.get(index)!!
+        url  = "https://farm" + photo.farm + ".staticflickr.com/" +
+                photo.server + "/" + photo.id+"_"+photo.secret + ".jpg"
     }
 }
