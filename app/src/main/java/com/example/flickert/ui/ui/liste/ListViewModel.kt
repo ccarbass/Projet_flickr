@@ -1,4 +1,7 @@
 package com.example.flickert.ui.ui.liste
 
-class ListViewModel {
+import androidx.lifecycle.ViewModel
+
+class ListViewModel : ViewModel() {
+    // TODO: Implement the ViewModel
 }
