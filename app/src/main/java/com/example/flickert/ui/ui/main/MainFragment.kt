@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 
 import com.example.flickert.R
@@ -38,6 +39,7 @@ class MainFragment : Fragment() {
                 val image = layout.findViewById<ImageView>(R.id.image_hp)
                 val titre = layout.findViewById<TextView>(R.id.title_image)
                 val boutonNext = layout.findViewById<Button>(R.id.buttonNext)
+                val boutonAll = layout.findViewById<Button>(R.id.button_all_images)
 
                 val firstUrl = "https://farm" + data.photo.get(viewModel.index).farm + ".staticflickr.com/" +
                         data.photo.get(viewModel.index).server + "/" + data.photo.get(viewModel.index).id+"_"+data.photo.get(viewModel.index).secret + ".jpg"
@@ -51,6 +53,10 @@ class MainFragment : Fragment() {
                     viewModel.nextImage()
                     titre.text = data.photo.get(viewModel.index).title
                     Glide.with(layout).load(viewModel.url).into(image)
+                }
+
+                boutonAll.setOnClickListener{
+                    Navigation.findNavController(boutonAll).navigate(R.id.main_to_listFragment)
                 }
 
             })

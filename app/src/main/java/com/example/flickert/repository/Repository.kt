@@ -1,5 +1,6 @@
 package com.example.flickert.repository
 
+import android.util.Log.INFO
 import com.example.flickert.model.SearchResult
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -20,5 +21,6 @@ class Repository {
             "34b3c6c1b435ac9b6b4206e3ca8bc32d",
             "20"
         ).enqueue(callback)
+        INFO
     }
 }
