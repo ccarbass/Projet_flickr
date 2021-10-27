@@ -29,7 +29,6 @@ class ListFragment : Fragment() {
 
         ListViewModel().photos.observe(this, Observer { photos ->
            run{
-
                recycler.layoutManager=GridLayoutManager(requireActivity(),2)
                recycler.adapter=MyAdapter(photos){position ->
                }

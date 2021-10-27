@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flickert.R
 import com.example.flickert.model.Photo
+import com.example.flickert.ui.ui.main.MainFragmentDirections
 
 class MyAdapter(val photos : List<Photo>, val callback: (Int)->Unit) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
     // un ViewHolder permet de stocker la vue de chaque item de la liste
@@ -41,6 +43,11 @@ class MyAdapter(val photos : List<Photo>, val callback: (Int)->Unit) : RecyclerV
         val url = "https://farm"+farm+".staticflickr.com/"+server+"/"+id+"_"+secret+".jpg"
 
         Glide.with(holder.v).load(url).into(image)
+
+        image.setOnClickListener{
+            val action = ListFragmentDirections.listTofull(url)
+            Navigation.findNavController(holder.v).navigate(action)
+        }
     }
 
     // appelé quand le recycerview a besoin de connaître la taille de la liste qu'il doit afficher

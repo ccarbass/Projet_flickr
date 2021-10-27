@@ -30,7 +30,8 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
                 val rep = response.body()
                 photos.value = rep?.photos!!
-                photo = photos?.value?.photo?.get(1)!!
+                photo = photos?.value?.photo?.get(0)!!
+                url="https://farm" + photos?.value?.photo?.get(0)!!.farm + ".staticflickr.com/" + photos?.value?.photo?.get(0)!!.server + "/" + photos?.value?.photo?.get(0)!!.id+"_"+photos?.value?.photo?.get(0)!!.secret + ".jpg"
 
                 Log.v("index", index.toString())
                 Log.v("url", url)

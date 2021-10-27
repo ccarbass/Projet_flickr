@@ -1,10 +1,8 @@
 package com.example.flickert.ui.ui.main
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,25 +39,29 @@ class MainFragment : Fragment() {
                 val titre = layout.findViewById<TextView>(R.id.title_image)
                 val boutonNext = layout.findViewById<Button>(R.id.buttonNext)
                 val boutonAll = layout.findViewById<Button>(R.id.button_all_images)
-
-                val firstUrl = "https://farm" + data.photo.get(viewModel.index).farm + ".staticflickr.com/" +
+                titre.text = data.photo.get(viewModel.index).title
+                val FirstUrl="https://farm" + data.photo.get(viewModel.index).farm + ".staticflickr.com/" +
                         data.photo.get(viewModel.index).server + "/" + data.photo.get(viewModel.index).id+"_"+data.photo.get(viewModel.index).secret + ".jpg"
-Log.v("firsturl",firstUrl)
-                titre.text = data.photo.get(viewModel.index).title + viewModel.url
-                Glide.with(layout).load(firstUrl).into(image)
 
+                Glide.with(layout).load(FirstUrl).into(image)
 
+                image.setOnClickListener{
+                    val action =MainFragmentDirections.mainTofull(viewModel.url)
+                    Navigation.findNavController(image).navigate(action)
+                }
 
                 boutonNext.setOnClickListener {
                     viewModel.nextImage()
                     titre.text = data.photo.get(viewModel.index).title
                     Glide.with(layout).load(viewModel.url).into(image)
-                }
+                    image.setOnClickListener{
+                        val action =MainFragmentDirections.mainTofull(viewModel.url)
+                        Navigation.findNavController(image).navigate(action)
+                    }}
 
                 boutonAll.setOnClickListener{
                     Navigation.findNavController(boutonAll).navigate(R.id.main_to_listFragment)
                 }
-
             })
         return layout
     }
