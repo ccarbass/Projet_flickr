@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +44,7 @@ class MainFragment : Fragment() {
 
                 val firstUrl = "https://farm" + data.photo.get(viewModel.index).farm + ".staticflickr.com/" +
                         data.photo.get(viewModel.index).server + "/" + data.photo.get(viewModel.index).id+"_"+data.photo.get(viewModel.index).secret + ".jpg"
-
+Log.v("firsturl",firstUrl)
                 titre.text = data.photo.get(viewModel.index).title + viewModel.url
                 Glide.with(layout).load(firstUrl).into(image)
 

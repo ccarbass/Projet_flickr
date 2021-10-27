@@ -26,9 +26,11 @@ class ListViewModel : ViewModel() {
                 val rep = response.body()?.photos
                 for(photo in rep?.photo!!){
                     listePhoto.add(photo)
+
                 }
                 photos.value=listePhoto
                 Log.v("reponse", "photos récupérées dans liste")
+
 
             }
         })

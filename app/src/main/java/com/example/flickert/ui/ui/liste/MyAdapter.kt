@@ -1,5 +1,6 @@
 package com.example.flickert.ui.ui.liste
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.GridLayout
@@ -32,8 +33,12 @@ class MyAdapter(val photos : List<Photo>, val callback: (Int)->Unit) : RecyclerV
         val server = photos[position].server
         val id =photos[position].id
         val secret = photos[position].secret
+        Log.v("farm",farm)
+        Log.v("server",server)
+        Log.v("id",id)
+        Log.v("secret",secret)
 
-        val url = "https://farm"+farm+"staticflick.com/"+server+"/"+id+"_"+secret+".jpg"
+        val url = "https://farm"+farm+".staticflickr.com/"+server+"/"+id+"_"+secret+".jpg"
 
         Glide.with(holder.v).load(url).into(image)
     }

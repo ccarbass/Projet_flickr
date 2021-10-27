@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:visibility="visible"
     tools:context=".ui.ui.liste.ListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/grille"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp" />
 
 </FrameLayout>

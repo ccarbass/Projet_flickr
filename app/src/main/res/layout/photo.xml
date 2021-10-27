@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_column="0"
-            app:layout_row="0"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/image_de_la_grille"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="287dp"
+            tools:src="@tools:sample/avatars" />
 </GridLayout>

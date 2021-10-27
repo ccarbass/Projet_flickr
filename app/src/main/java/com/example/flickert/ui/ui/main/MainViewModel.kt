@@ -53,7 +53,9 @@ class MainViewModel : ViewModel() {
 
         }
         photo= photos.value?.photo?.get(index)!!
+
         url  = "https://farm" + photo.farm + ".staticflickr.com/" +
                 photo.server + "/" + photo.id+"_"+photo.secret + ".jpg"
+        Log.v("firsturl",url)
     }
 }
