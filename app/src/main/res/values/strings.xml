@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Flickert</string>
     <string name="image_de_la_grille">image de la grille</string>
+    <string name="image_en_plein_cran">Image en plein écran</string>
 </resources>

@@ -34,5 +34,11 @@
         <argument
             android:name="url"
             app:argType="string" />
+        <action
+            android:id="@+id/full_toMain"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/full_toList"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>
