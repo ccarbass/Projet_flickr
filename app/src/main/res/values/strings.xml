@@ -2,4 +2,9 @@
     <string name="app_name">Flickert</string>
     <string name="image_de_la_grille">image de la grille</string>
     <string name="image_en_plein_cran">Image en plein écran</string>
+    <string name="titre">Titre</string>
+    <string name="en_cours_de_chargement">en cours de chargement ...</string>
+    <string name="image_suivante">Image suivante</string>
+    <string name="toutes_les_images">Toutes les images</string>
+
 </resources>
