@@ -13,10 +13,22 @@
         <action
             android:id="@+id/main_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_fullFragment"
+            app:destination="@id/fullFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.flickert.ui.ui.liste.ListFragment"
         android:label="list_fragment"
-        tools:layout="@layout/list_fragment" />
+        tools:layout="@layout/list_fragment" >
+        <action
+            android:id="@+id/action_listFragment_to_fullFragment"
+            app:destination="@id/fullFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullFragment"
+        android:name="com.example.flickert.ui.ui.full.FullFragment"
+        android:label="full_fragment"
+        tools:layout="@layout/full_fragment" />
 </navigation>
